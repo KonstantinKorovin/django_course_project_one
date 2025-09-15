@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'mailings/base.html' %}
+<html lang="en">
+<head>
+  {% block title %}Mailings{% endblock %}
+</head>
+<body>
+    {% block content %}
+    <header class="header-container">
+        <div class="border-one">
+            <a href="{% url 'mailings:create-mailing' %}">Создать Рассылку</a>
+        </div>
+        <div class="card-container">
+            {% for obj in mailings %}
+                <div class="card">
+                    <div class="card-title">
+                        Рассылка: <h1>{{ obj.message.theme }}</h1>
+                    </div>
+                    <div class="card-sub">
+                        <p>Статус рассылки: {{ obj.status }}</p>
+                    </div>
+                    <div class="view">
+                        <form method="post" action="{% url 'mailings:launch-mailing' obj.pk %}">
+                            {% csrf_token %}
+                            <button type="submit">Запустить</button>
+                        </form>
+                        <a href="{% url 'mailings:detail-mailing' obj.pk %}">Посмотреть</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </header>
+    {% endblock %}
+</body>
+</html>

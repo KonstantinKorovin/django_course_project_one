@@ -1,0 +1,24 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Recipients{% endblock %}
+<body>
+    {% block content %}
+    <header class="header-container">
+        <div class="border-one">
+            <a href="{% url 'users:create-recipient' %}">Создать получателя</a>
+        </div>
+        <div class="card-container">
+            {% for obj in recipients %}
+                <div class="card">
+                    <div class="card-title">
+                        <h1>{{ obj.full_name }}</h1>
+                    </div>
+                    <div class="view">
+                        <a href="{% url 'users:detail-recipient' obj.pk %}">Посмотреть</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </header>
+    {% endblock %}
+</body>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends 'communications/base.html' %}
+<html lang="en">
+{% block title %}Messages{% endblock %}
+<body>
+    {% block content %}
+    <header class="header-container">
+        <div class="border-one">
+            <a href="{% url 'communications:create-message' %}">Создать сообщение</a>
+        </div>
+        <div class="card-container">
+            {% for obj in messages %}
+                <div class="card">
+                    <div class="card-title">
+                        <h1>{{ obj.theme }}</h1>
+                    </div>
+                    <div class="view">
+                        <a href="{% url 'communications:detail-message' obj.pk %}">Посмотреть</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </header>
+    {% endblock %}
+</body>
+</html>

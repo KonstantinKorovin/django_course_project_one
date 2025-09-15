@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #eee;
+}
+
+.nav-container {
+    background-color: #4d4a4f;
+    color: black;
+    width: 100%;
+    height: 55px;
+}
+
+.nav-one {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 15px;
+}
+
+.nav-one a {
+    margin-right: 15px;
+}
+
+.nav-one a:last-child {
+    margin-right: 0;
+}
+
+header {
+    font-family: "Open Sans", sans-serif;
+}
+
+nav {
+    font-family: "Open Sans", sans-serif;
+}
+
+.header-container {
+    position: relative;
+    text-align: center;
+    margin-top: 125px;
+}
+
+.header-one {
+    padding-top: 5px;
+    color: #4d4a4f;
+}
+
+a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    transform: scale(1.15);
+}
+
+.border-one {
+    margin: auto;
+    background-color: #fff;
+    width: 200px;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    margin-right: 15px;
+    text-decoration: none;
+    color: black;
+}
+
+button:hover {
+    transform: scale(1.15);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.card-sub {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 300;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.card {
+    background-color: #fff;
+    width: 300px;
+    min-height: 200px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba (0, 0, 0, 0.1);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card-title h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 85px;
+    gap: 9px;
+}
+
+.card-title-one {
+    position: relative;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.card-container-one {
+    margin-top: 155px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    padding: 20px;
+}
+
+.border-one-one {
+    margin: auto;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 11px;
+    width: 85px;
+}

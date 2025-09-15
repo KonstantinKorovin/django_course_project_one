@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'users/base.html' %}
+<html lang="en">
+<head>
+    {% block title %}
+        {% if recipient %}
+            Update recipient
+        {% else %}
+            Create recipient
+        {% endif %}
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <header class="header-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">
+                {% if recipient %}
+                    Сохранить
+                {% else %}
+                    Создать
+                {% endif %}
+            </button>
+            {% if recipient %}
+                <a href="{% url 'users:detail-recipient' recipient.pk %}" >Назад</a>
+            {% else %}
+                <a href="{% url 'users:list-recipients' %}" >Назад</a>
+            {% endif %}
+        </form>
+    </header>
+    {% endblock %}
+</body>
+</html>

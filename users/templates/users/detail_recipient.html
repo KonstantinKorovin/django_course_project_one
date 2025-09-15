@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'users/base.html' %}
+<html lang="en">
+<head>
+    {% block title %}Recipient{% endblock %}
+</head>
+<body>
+    {% block content %}
+    <header>
+        <div class="card-container-one">
+            <div class="card">
+                <div class="card-title">
+                    <h1>{{ recipient.full_name }}</h1>
+                </div>
+                <div class="card-sub">
+                    <p>Почта: {{ recipient.email }}</p>
+                    <p>О пользователе: {{ recipient.comment }}</p>
+                </div>
+                <div class="view">
+                    {% if user == recipient.owner %}
+                        <a href="{% url 'users:update-recipient' recipient.pk %}">Редактировать</a>
+                    {% endif %}
+                    {% if user == recipient.owner %}
+                        <a href="{% url 'users:delete-recipient' recipient.pk %}">Удалить</a>
+                    {% endif %}
+                    <a href="{% url 'users:list-recipients' %}">Назад</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+</body>
+</html>

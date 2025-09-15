@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'communications/base.html' %}
+<html lang="en">
+<head>
+    {% block title %}
+        {% if message %}
+            Update message
+        {% else %}
+            Create message
+        {% endif %}
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <header class="header-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">
+                {% if message %}
+                    Сохранить
+                {% else %}
+                    Создать
+                {% endif %}
+            </button>
+            {% if message %}
+                <a href="{% url 'communications:detail-message' message.pk %}" >Назад</a>
+            {% else %}
+                <a href="{% url 'communications:list-messages' %}" >Назад</a>
+            {% endif %}
+        </form>
+    </header>
+    {% endblock %}
+</body>
+</html>

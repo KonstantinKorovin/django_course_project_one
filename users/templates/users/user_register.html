@@ -1,0 +1,15 @@
+{% extends 'users/base.html' %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-container">
+        <form class="card-sub" method="post">
+            <p class="card-title">Регистрация</p>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Зарегестрироваться</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

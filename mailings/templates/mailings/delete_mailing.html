@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends 'mailings/base.html' %}
+<html lang="en">
+<head>
+    {% block title %}Delete mailing{% endblock %}
+</head>
+<body>
+    {% block content %}
+    <header>
+        <div class="card-container-one">
+            <div class="card">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="card-title-one">
+                        <p>
+                            Вы действительно хотите удалить рассылку с сообщением на тему:
+                           <em>
+                              {{ mailing.message.theme }}
+                           </em>?
+                        </p>
+                    </div>
+                    <div class="border-center">
+                        <div class="view">
+                            <button class="border-one-one" type="submit">
+                                Удалить
+                            </button>
+                            <a href="{% url 'mailings:detail-mailing' mailing.pk %}">Назад</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+</body>
+</html>

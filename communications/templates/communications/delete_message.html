@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% extends 'communications/base.html' %}
+<html lang="en">
+<head>
+    {% block title %}Delete message{% endblock %}
+</head>
+<body>
+    {% block content %}
+    <header>
+        <div class="card-container-one">
+            <div class="card">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="card-title-one">
+                        <p>
+                            Вы действительно хотите удалить сообщение на тему: <em>{{ message.theme }}</em> ?
+                        </p>
+                    </div>
+                    <div class="border-center">
+                        <div class="view">
+                            <button class="border-one-one" type="submit">
+                                Удалить
+                            </button>
+                            <a href="{% url 'communications:detail-message' message.pk %}">Назад</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+</body>
+</html>

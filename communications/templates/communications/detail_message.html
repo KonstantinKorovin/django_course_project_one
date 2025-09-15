@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'communications/base.html' %}
+<html lang="en">
+<head>
+    {% block title %}Message{% endblock %}
+</head>
+<body>
+    {% block content %}
+    <header>
+        <div class="card-container-one">
+            <div class="card">
+                <div class="card-title">
+                    <h1>{{ message.theme }}</h1>
+                </div>
+                <div class="card-sub">
+                    <p>{{ message.message }}</p>
+                </div>
+                <div class="view">
+                    <a href="{% url 'communications:update-message' message.pk %}">Редактировать</a>
+                    <a href="{% url 'communications:delete-message' message.pk %}">Удалить</a>
+                    <a href="{% url 'communications:list-messages' %}">Назад</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+</body>
+</html>

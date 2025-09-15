@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'mailings/base.html' %}
+<html lang="en">
+<head>
+    {% block title %}Mailing{% endblock %}
+</head>
+<body>
+    {% block content %}
+    <header>
+        <div class="card-container-one">
+            <div class="card">
+                <div class="card-title">
+                    <h1>{{ mailing.theme }}</h1>
+                </div>
+                <div class="card-sub">
+                    <ul>
+                    {% if mailing.recipients.all|length > 1 %}
+                        Получатели рассылки:
+                    {% else %}
+                        Получатель рассылки:
+                    {% endif %}
+
+                    {% for recipient in mailing.recipients.all %}
+                        <li>{{ recipient.full_name }}</li>
+                    {% endfor %}
+
+                    {% if mailing.recipients.all|length > 1 %}
+                        <p>Сообщение для пользователей на тему: {{ mailing.message.theme }}</p>
+                    {% else %}
+                        <p>Сообщение для пользователя на тему: {{ mailing.message.theme }}</p>
+                    {% endif %}
+
+                    {% for attempt in mailing.mailingattempt_set.all %}
+                        {% if attempt.date_attempt %}
+                            <li>Попытка рассылки: {{ attempt.date_attempt|date:'d.M.Y - H:i' }}</li>
+                        {% else %}
+                            Ваша рассылка еще не была запущена.
+                        {% endif %}
+                            <li>Ответ почтового сервера: {{ attempt.response_status }}</li>
+                            <li>Статус отправки: {{ attempt.status }}</li>
+                    {% endfor %}
+                    <li>Всего попыток: {{ mailing.mailingattempt_set.all|length }}</li>
+                    </ul>
+
+                    {% if perms.mailings.can_disable_mailing %}
+                        <form method="post" action="{% url 'mailings:disable-mailing' mailing.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-warning">Отключить рассылку</button>
+                        </form>
+                    {% endif %}
+                </div>
+                <div class="view">
+                    <a href="{% url 'mailings:update-mailing' mailing.pk %}">Редактировать</a>
+                    <a href="{% url 'mailings:delete-mailing' mailing.pk %}">Удалить</a>
+                    <a href="{% url 'mailings:list-mailings' %}">Назад</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+</body>
+</html>

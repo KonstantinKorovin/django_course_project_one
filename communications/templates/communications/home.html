@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'communications/base.html' %}
+<html lang="en">
+<head>
+    {% block title %}Home{% endblock %}
+</head>
+<body>
+    {% block content %}
+    <header>
+        <div class="header-container">
+            <h1>Главная страница</h1>
+            <h3 class="header-one"><em>Сервис рассылок</em></h3>
+        </div>
+    </header>
+    <main>
+        <div class="card-container">
+            <p>Количество всех рассылок на сервере: {{ mailings|length }}</p>
+            <p>Количество активных рассылок: {{ successful_mailings_count }}</p>
+            <p>Количество уникальных получателей: {{ distinct_recipients }}</p>
+        </div>
+    </main>
+    {% endblock %}
+</body>
+</html>

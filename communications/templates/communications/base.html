@@ -1,0 +1,22 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <nav class="nav-container">
+        {% include 'communications/includes/nav_nav.html' %}
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <main>
+
+    </main>
+    <footer>
+
+    </footer>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

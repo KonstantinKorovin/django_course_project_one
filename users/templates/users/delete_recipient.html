@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% extends 'users/base.html' %}
+<html lang="en">
+<head>
+    {% block title %}Delete recipient{% endblock %}
+</head>
+<body>
+    {% block content %}
+    <header>
+        <div class="card-container-one">
+            <div class="card">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="card-title-one">
+                        <p>
+                            Вы действительно хотите удалить пользователя:
+                           <em>
+                              {{ recipient.full_name }}
+                           </em> из рассылки?
+                        </p>
+                    </div>
+                    <div class="border-center">
+                        <div class="view">
+                            <button class="border-one-one" type="submit">
+                                Удалить
+                            </button>
+                            <a href="{% url 'users:detail-recipient' recipient.pk %}">Назад</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+</body>
+</html>

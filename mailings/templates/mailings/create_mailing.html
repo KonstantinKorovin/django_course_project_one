@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'mailings/base.html' %}
+<html lang="en">
+<head>
+    {% block title %}
+        {% if recipient %}
+            Update mailing
+        {% else %}
+            Create mailing
+        {% endif %}
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <header class="header-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">
+                {% if mailing %}
+                    Сохранить
+                {% else %}
+                    Создать
+                {% endif %}
+            </button>
+            {% if mailing %}
+                <a href="{% url 'mailings:detail-mailing' mailing.pk %}">Назад</a>
+            {% else %}
+                <a href="{% url 'mailings:list-mailings' %}">Назад</a>
+            {% endif %}
+        </form>
+    </header>
+    {% endblock %}
+</body>
+</html>

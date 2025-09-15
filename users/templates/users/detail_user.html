@@ -1,0 +1,52 @@
+{% extends 'users/base.html' %}
+<html lang="en">
+<head>
+    {% block title %}User{% endblock %}
+</head>
+<body>
+    {% block content %}
+    <header>
+        <div class="card-container-one">
+            <div class="card">
+                <div class="card-title">
+                    <h1>{{ user.email }}</h1>
+                </div>
+                <div class="card-sub">
+                    <p>Почта: {{ user.email }}</p>
+                    <p>
+                        {% if user.phone_number %}
+                            Номер телефона: {{ user.phone_number }}
+                        {% else %}
+                            Номер телефона: Не указано
+                        {% endif %}
+                    </p>
+                    <p>
+                        {% if user.country %}
+                            Страна: {{ user.country }}
+                        {% else %}
+                            Страна: Не указано
+                        {% endif %}
+                    </p>
+                    <p>Статус пользователя: {{ user.is_active|yesno:"Активен,Не активен" }}</p>
+                </div>
+                <div class="view">
+                    {% if perms.users.can_block_user %}
+                    <form method="post" action="{% url 'users:user-toggle-active' user.pk %}">
+                        {% csrf_token %}
+                        <button type="submit">
+                            {% if user.is_active %}
+                                Заблокировать пользователя
+                            {% else %}
+                                Разблокировать пользователя
+                            {% endif %}
+                        </button>
+                    </form>
+                    {% endif %}
+                    <a href="{% url 'users:list-users' %}">Назад</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+</body>
+</html>
